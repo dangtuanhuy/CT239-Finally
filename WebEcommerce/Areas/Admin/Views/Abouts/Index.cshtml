@@ -8,39 +8,65 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create", "Abouts")" class="btn btn-info">
+        <i class="fa fa-floppy-o"></i>
+        <span>
+
+        </span>
+    </a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AboutUs)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AboutDetails)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee.EmployeePass)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-striped table-bordered" id="tablefillset">
+    <thead>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AboutUs)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AboutDetails)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Employee.EmployeePass)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AboutId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AboutId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AboutId })
-        </td>
-    </tr>
-}
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AboutUs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AboutDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.EmployeePass)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AboutUs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AboutDetails)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.EmployeePass)
+                </td>
+                <td align="center">
+                    <a href="@Url.Action("Edit", "Abouts", new { id = item.AboutId })" class="btn btn-success">
+                        <i class="fa fa-flash"></i>
+                        <span>
 
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("Details", "Abouts", new { id = item.AboutId })" class="btn btn-primary">
+                        <i class="fa fa-list-alt"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("Delete", "Abouts", new { id = item.AboutId })" class="btn btn-danger">
+                        <i class="fa fa-trash"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
