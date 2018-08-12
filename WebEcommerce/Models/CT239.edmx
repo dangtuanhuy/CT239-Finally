@@ -4,14 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CT239Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CT239Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="About">
           <Key>
             <PropertyRef Name="AboutId" />
           </Key>
           <Property Name="AboutId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AboutUs" Type="nvarchar" MaxLength="50" />
-          <Property Name="AboutImg" Type="image" />
           <Property Name="AboutDetails" Type="ntext" />
           <Property Name="EmployeeCode" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -474,22 +473,10 @@
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CT239Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="About">
-          <Key>
-            <PropertyRef Name="AboutId" />
-          </Key>
-          <Property Name="AboutId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AboutUs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AboutImg" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="AboutDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_About_Employee" FromRole="About" ToRole="Employee" />
-        </EntityType>
         <EntityType Name="Branch">
           <Key>
             <PropertyRef Name="BranchId" />
@@ -573,11 +560,11 @@
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReportsTo" Type="Int32" />
           <Property Name="RoleId" Type="Int32" />
-          <NavigationProperty Name="Abouts" Relationship="Self.FK_About_Employee" FromRole="Employee" ToRole="About" />
           <NavigationProperty Name="Branches" Relationship="Self.FK_Branch_Employee" FromRole="Employee" ToRole="Branch" />
           <NavigationProperty Name="Deliveries" Relationship="Self.FK_Delivery_Employee" FromRole="Employee" ToRole="Delivery" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
           <NavigationProperty Name="News" Relationship="Self.FK_News_Employee" FromRole="Employee" ToRole="News" />
+          <NavigationProperty Name="Abouts" Relationship="CT239Model.FK_About_Employee" FromRole="Employee" ToRole="About" />
         </EntityType>
         <EntityType Name="ImgProduct">
           <Key>
@@ -709,20 +696,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_About_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="About" Type="Self.About" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeCode" />
-            </Principal>
-            <Dependent Role="About">
-              <PropertyRef Name="EmployeeCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Branch_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -902,7 +875,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CT239Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Abouts" EntityType="Self.About" />
           <EntitySet Name="Branches" EntityType="Self.Branch" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
@@ -919,10 +891,6 @@
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <AssociationSet Name="FK_About_Employee" Association="Self.FK_About_Employee">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="About" EntitySet="Abouts" />
-          </AssociationSet>
           <AssociationSet Name="FK_Branch_Employee" Association="Self.FK_Branch_Employee">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Branch" EntitySet="Branches" />
@@ -975,24 +943,42 @@
             <End Role="Suppliers" EntitySet="Suppliers" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="Abouts" EntityType="CT239Model.About" />
+          <AssociationSet Name="FK_About_Employee" Association="CT239Model.FK_About_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="About" EntitySet="Abouts" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="AboutId" />
+          </Key>
+          <Property Name="AboutId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AboutUs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AboutDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="CT239Model.FK_About_Employee" FromRole="About" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_About_Employee">
+          <End Type="CT239Model.Employee" Role="Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CT239Model.About" Role="About" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeCode" />
+            </Principal>
+            <Dependent Role="About">
+              <PropertyRef Name="EmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CT239ModelStoreContainer" CdmEntityContainer="CT239Entities">
-          <EntitySetMapping Name="Abouts">
-            <EntityTypeMapping TypeName="CT239Model.About">
-              <MappingFragment StoreEntitySet="About">
-                <ScalarProperty Name="AboutId" ColumnName="AboutId" />
-                <ScalarProperty Name="AboutUs" ColumnName="AboutUs" />
-                <ScalarProperty Name="AboutImg" ColumnName="AboutImg" />
-                <ScalarProperty Name="AboutDetails" ColumnName="AboutDetails" />
-                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Branches">
             <EntityTypeMapping TypeName="CT239Model.Branch">
               <MappingFragment StoreEntitySet="Branch">
@@ -1196,6 +1182,16 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Abouts">
+            <EntityTypeMapping TypeName="CT239Model.About">
+              <MappingFragment StoreEntitySet="About">
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="AboutDetails" ColumnName="AboutDetails" />
+                <ScalarProperty Name="AboutUs" ColumnName="AboutUs" />
+                <ScalarProperty Name="AboutId" ColumnName="AboutId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

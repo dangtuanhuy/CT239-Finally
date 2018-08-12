@@ -161,7 +161,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AboutsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BranchesController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DeliveriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EmployeesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PromotionsController.cs" />
@@ -175,10 +180,12 @@
     <Compile Include="Models\About.cs">
       <DependentUpon>CT239.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AboutsMetaData.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Branch.cs">
       <DependentUpon>CT239.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BranchesMetaData.cs" />
     <Compile Include="Models\CategoriesMetaData.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>CT239.tt</DependentUpon>
@@ -204,12 +211,14 @@
     <Compile Include="Models\Customer.cs">
       <DependentUpon>CT239.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DeliveriesMetaData.cs" />
     <Compile Include="Models\Delivery.cs">
       <DependentUpon>CT239.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs">
       <DependentUpon>CT239.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmployeesMetaData.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImgProduct.cs">
       <DependentUpon>CT239.tt</DependentUpon>
@@ -218,6 +227,7 @@
     <Compile Include="Models\News.cs">
       <DependentUpon>CT239.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NewsMetaData.cs" />
     <Compile Include="Models\Order.cs">
       <DependentUpon>CT239.tt</DependentUpon>
     </Compile>
@@ -1357,6 +1367,31 @@
     <Content Include="Areas\Admin\Views\Promotions\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Promotions\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Promotions\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Branches\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Branches\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Branches\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Branches\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Branches\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Deliveries\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Deliveries\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Deliveries\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Deliveries\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Deliveries\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Abouts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Abouts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Abouts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Abouts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Abouts\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

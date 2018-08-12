@@ -16,7 +16,6 @@ namespace WebEcommerce.Models
     {
         public int AboutId { get; set; }
         public string AboutUs { get; set; }
-        public byte[] AboutImg { get; set; }
         public string AboutDetails { get; set; }
         public string EmployeeCode { get; set; }
     
