@@ -1,0 +1,86 @@
+﻿@model IEnumerable<WebEcommerce.Models.Promotion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Promotion</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Promotions")" class="btn btn-info">
+        <i class="fa fa-floppy-o"></i>
+        <span>
+
+        </span>
+    </a>
+</p>
+<table class="table table-striped table-bordered" id="tablefillset">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionDiscount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionOpen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromotionClose)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionDiscount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionOpen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PromotionClose)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Promotions", new { id = item.PromotionId })" class="btn btn-success">
+                        <i class="fa fa-flash"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("Details", "Promotions", new { id = item.PromotionId })" class="btn btn-primary">
+                        <i class="fa fa-list-alt"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("Delete", "Promotions", new { id = item.PromotionId })" class="btn btn-danger">
+                        <i class="fa fa-trash"></i>
+                        <span>
+
+                        </span>
+                    </a>
+
+                   
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

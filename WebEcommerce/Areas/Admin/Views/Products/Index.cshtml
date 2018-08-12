@@ -1,0 +1,105 @@
+﻿@model IEnumerable<WebEcommerce.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Products</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Products")" class="btn btn-info">
+        <i class="fa fa-floppy-o"></i>
+        <span>
+
+        </span>
+    </a>
+</p>
+<table class="table table-striped table-bordered" id="tablefillset">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ProductStatus)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ProductUpdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductSold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductStatus)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductUpdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductQty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductSold)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+
+                <td align="center">
+                    <a href="@Url.Action("UploadProducts", "Products", new { id = item.ProductId })" class="btn btn-info">
+                        <i class="fa fa-image"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("Edit", "Products", new { id = item.ProductId })" class="btn btn-success">
+                        <i class="fa fa-flash"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductId })" class="btn btn-primary">
+                        <i class="fa fa-list-alt"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                    |
+                    <a href="@Url.Action("Delete", "Products", new { id = item.ProductId })" class="btn btn-danger">
+                        <i class="fa fa-trash"></i>
+                        <span>
+
+                        </span>
+                    </a>
+                    
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
