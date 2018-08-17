@@ -12,6 +12,13 @@ namespace WebEcommerce.Controllers
         private CT239Entities db = new CT239Entities();
         public ActionResult Index()
         {
+            var lstProduct1 = db.Products.Where(n => n.CategoryId == 1);
+            ViewBag.ListProduct1 = lstProduct1;
+
+
+            var lstProduct2 = db.Products.Where(n => n.CategoryId == 2);
+            ViewBag.ListProduct2 = lstProduct2;
+            ViewBag.Categories = db.Categories.ToList();
             return View();
         }
 
@@ -33,6 +40,11 @@ namespace WebEcommerce.Controllers
             ViewBag.Categories = db.Categories.ToList();
             //var lstCate = from CAT in db.Categories select CAT;
             return PartialView("_CategoryPartial");
+        }
+
+        public ActionResult ProductStyle1Partial()
+        {
+            return PartialView();
         }
     }
 }

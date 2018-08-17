@@ -1216,6 +1216,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ImgUI\Products\adv_1.png" />
+    <Content Include="ImgUI\Products\adv_2.png" />
+    <Content Include="ImgUI\Products\adv_3.png" />
+    <Content Include="ImgUI\Products\banner_2_background.jpg" />
+    <Content Include="ImgUI\Products\best_2.png" />
+    <Content Include="ImgUI\Products\best_5.png" />
+    <Content Include="ImgUI\Products\best_6.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -1443,13 +1450,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_UserLayout.cshtml" />
     <Content Include="Views\Shared\_CategoryPartial.cshtml" />
+    <Content Include="Views\Home\_ProductStyle1Partial.cshtml" />
+    <Content Include="Views\Home\_ProductStyle2Partial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="ImgUI\Delivery\" />
     <Folder Include="ImgUI\Employee\" />
     <Folder Include="ImgUI\News\" />
-    <Folder Include="ImgUI\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
